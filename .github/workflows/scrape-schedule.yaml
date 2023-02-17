@@ -1,7 +1,7 @@
 name: Ambil data hari libur
 on:
   schedule:
-    - cron: '*/10 * * * *'
+    - cron: '0 0 * */1 *'
   workflow_dispatch:
 
 jobs:
@@ -27,6 +27,7 @@ jobs:
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
+        force: true
         github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: ${{ github.ref }}
     - name: Deploy to production
