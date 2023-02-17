@@ -11,30 +11,30 @@ const datapath = join(__dirname, '../data')
 
 module.exports = async (req, res) => {
     let result = [];
-    let year = parseInt(req.query.year || (new Date()).getFullYear());
-    let month = req.query.month ? parseInt(req.query.month) : undefined;
+    let tahun = parseInt(req.query.tahun || (new Date()).getFullYear());
+    let bulan = req.query.bulan ? parseInt(req.query.bulan) : undefined;
 
-    const filepath = join(datapath, `${year}.json`)
+    const filepath = join(datapath, `${tahun}.json`)
 
     /**
-     * Membaca file berdasarkan filepath, memfilter jika month dan year diisi, atau
-     * hanya year diisi, kemudian mengirimkan hasilnya.
+     * Membaca file berdasarkan filepath, memfilter jika bulan dan tahun diisi, atau
+     * hanya tahun diisi, kemudian mengirimkan hasilnya.
      * @param {string} filepath lokasi file yang akan dibaca.
-     * @param {string} month bulan dalam angka dalam rentang 1-12. (opsional)
-     * @param {string} year tahun dalam rentang 4 digit. (opsional)
+     * @param {string} bulan bulan dalam angka dalam rentang 1-12. (opsional)
+     * @param {string} tahun tahun dalam rentang 4 digit. (opsional)
      * @return {object} hasil.
      */
     if (fs.existsSync(filepath)) {
         let text = await fsPromises.readFile(filepath, 'utf8');
         let parseResult = JSON.parse(text);
 
-        if (month && year) {
+        if (bulan && tahun) {
             result = parseResult.filter(item => {
-                if ((new Date(item.tanggal)).getMonth() + 1 == month) {
+                if ((new Date(item.tanggal)).getMonth() + 1 == bulan) {
                     return item;
                 }
             });
-        } else if (year) {
+        } else if (tahun) {
             result = parseResult;
         }
         return res.status(200).send(result);
@@ -42,19 +42,19 @@ module.exports = async (req, res) => {
 
     /**
      * Mengambil daftar hari libur pada tahun yang telah ditentukan.
-     * @param {number} year - Tahun yang diinginkan.
-     * @param {number} month - Bulan yang diinginkan (opsional).
+     * @param {number} tahun - Tahun yang diinginkan.
+     * @param {number} bulan - Bulan yang diinginkan (opsional).
      * @return {array} daftarHariLibur - Daftar hari libur pada tahun dan bulan yang
      * ditentukan.
      */
     try {
-        const daftarHariLibur = await tanggalan(year)
+        const daftarHariLibur = await tanggalan(tahun)
         daftarHariLibur.map(item => {
-            if (!(month && year)) {
+            if (!(bulan && tahun)) {
                 result.push(item)
                 return
             }
-            if ((new Date(item.tanggal)).getMonth() + 1 == month) {
+            if ((new Date(item.tanggal)).getMonth() + 1 == bulan) {
                 result.push(item)
             }
 
