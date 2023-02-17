@@ -14,6 +14,12 @@ if (!fs.existsSync(datapath)) fs.mkdirSync(datapath, {
 })
 
 
+/**
+ * Fungsi utama untuk menulis daftar hari libur ke file.
+ * @param tahun Tahun yang ingin ditulis daftar hari liburnya. Jika tidak
+ * diberikan, maka akan menggunakan tahun saat ini.
+ * @returns Tidak ada.
+ */
 const main = async (tahun) => {
     tahun = tahun || new Date().getFullYear()
     const daftarHariLibur = await Promise.any([tanggalan(tahun)])
