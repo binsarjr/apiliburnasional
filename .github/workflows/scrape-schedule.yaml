@@ -19,7 +19,7 @@ jobs:
       run: npm run start
     - name: Commit files
       run: |
-        git config --local user.email binsarjr121@gmail.com
+        git config --local user.email "binsarjr121@gmail.com"
         git config --local user.name "Binsar Dwi Jasuma"
         git add -a
         d=`date '+%Y-%m-%dT%H:%M:%SZ'`
