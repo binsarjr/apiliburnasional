@@ -16,7 +16,9 @@ jobs:
     - name: Install dependecies
       run: npm install
     - name: Ambil data hari libur
-      run: npm run start
+      run: |
+        npm run start
+        rm package-lock.json
     - name: Commit files
       run: |
         git config --local user.email "binsarjr121@gmail.com"
