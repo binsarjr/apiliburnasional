@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Libur Nasional</title>
+</head>
+
+<body>
+    <h1>API Hari Libur Nasional</h1>
+    <h2>Cara Mengakses API</h2>
+    <ul>
+        <li><a href="/api">/api</a> untuk mendapatkan daftar hari libur tahun sekarang.</li>
+        <li><a href="/api?bulan=2&tahun=2023">/api?bulan=2&amp;tahun=2023</a> untuk mendapatkan daftar hari libur di
+            bulan 2 tahun 2023.</li>
+        <li><a href="/api?bulan=8">/api?bulan=8</a> untuk mendapatkan daftar hari libur di bulan 2 tahun sekarang.</li>
+    </ul>
+    <blockquote>
+        <p>Apabila data tidak ditemukan respon akan berupa array kosong</p>
+    </blockquote>
+    <h2>Bagaimana cara kerja API ini?</h2>
+    <p>API ini mengambil data dari <a href="https://tanggalan.com/" target="_blank">tanggalan.com</a>
+        dan data per tahun ditarik setiap satu bulan sekali menggunakan GitHub Actions.</p>
+    <p> Apabila mencoba mengakses data yang belum ditarik, server akan melakukan scraping ke web target</p>
+</body>
+
+</html>
