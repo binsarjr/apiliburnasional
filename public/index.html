@@ -6,24 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Libur Nasional</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
-<body>
-    <h1>API Hari Libur Nasional</h1>
-    <h2>Cara Mengakses API</h2>
+<body class="container">
+    <h2 class="text-center my-4">API Hari Libur Nasional</h2>
+    <h4>Cara Mengakses API</h4>
     <ul>
         <li><a href="/api">/api</a> untuk mendapatkan daftar hari libur tahun sekarang.</li>
-        <li><a href="/api?bulan=2&tahun=2023">/api?bulan=2&amp;tahun=2023</a> untuk mendapatkan daftar hari libur di
-            bulan 2 tahun 2023.</li>
-        <li><a href="/api?bulan=8">/api?bulan=8</a> untuk mendapatkan daftar hari libur di bulan 2 tahun sekarang.</li>
+        <li><a href="/api?bulan=2&tahun=2023">/api?bulan=2&amp;tahun=2023</a> gunakan parameter bulan dan tahun untuk mendapatkan daftar hari libur di bulan 2 tahun 2023.</li>
+        <li><a href="/api?tahun=2022">/api?tahun=2022</a> gunakan parameter tahun tuntuk mendapatkan daftat hari libur di tahun yang di inginkan.</li>
+        <li><a href="/api?bulan=8">/api?bulan=8</a> gunakan parameter bulan untuk mendapatkan daftar hari libur di bulan 2 tahun sekarang.</li>
     </ul>
-    <blockquote>
+    <div class="border-start border-info border-3 px-2">
         <p>Apabila data tidak ditemukan respon akan berupa array kosong</p>
-    </blockquote>
-    <h2>Bagaimana cara kerja API ini?</h2>
-    <p>API ini mengambil data dari <a href="https://tanggalan.com/" target="_blank">tanggalan.com</a>
-        dan data per tahun ditarik setiap satu bulan sekali menggunakan GitHub Actions.</p>
-    <p> Apabila mencoba mengakses data yang belum ditarik, server akan melakukan scraping ke web target</p>
+    </div>
+    <h4>Bagaimana cara kerja API ini?</h4>
+    <p>API ini mengambil data dari <a href="https://tanggalan.com/" target="_blank">tanggalan.com</a> dan data per tahun ditarik setiap satu bulan sekali menggunakan GitHub Actions.</p>
+    <p>Apabila mencoba mengakses data yang belum ditarik, server akan melakukan scraping ke web target</p>
 </body>
-
 </html>
