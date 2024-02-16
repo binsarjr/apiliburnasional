@@ -4,7 +4,9 @@
   },
   "dependencies": {
     "cheerio": "1.0.0-rc.12",
-    "got": "11"
+    "got": "11",
+    "id": "link:moment/locale/id",
+    "moment": "^2.30.1"
   },
   "engines": {
     "node": ">=18.*"
