@@ -1,9 +1,12 @@
 {
-	"scripts": {
-		"start": "node services/service.js"
-	},
-	"dependencies": {
-		"cheerio": "1.0.0-rc.12",
-		"got": "11"
-	}
+  "scripts": {
+    "start": "node services/service.js"
+  },
+  "dependencies": {
+    "cheerio": "1.0.0-rc.12",
+    "got": "11"
+  },
+  "engines": {
+    "node": ">=18.*"
+  }
 }
