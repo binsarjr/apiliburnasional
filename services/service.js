@@ -16,6 +16,7 @@ fs.readdir(datapath, (err, files) => {
 		const year = +file.split(".")[0];
 		if (year < current_year) {
 			fs.unlink(path.join(datapath, file), (err) => {
+				console.log("File " + file + " deleted.");
 				if (err) throw err;
 			});
 		}
@@ -31,6 +32,7 @@ fs.readdir(datapath, (err, files) => {
 const main = async (tahun) => {
 	tahun = tahun || new Date().getFullYear();
 	const daftarHariLibur = await Promise.any([tanggalan(tahun)]);
+	console.log(daftarHariLibur);
 	const outputfile = path.join(datapath, tahun + ".json");
 	fs.writeFileSync(outputfile, JSON.stringify(daftarHariLibur, null, 2));
 };
