@@ -23,12 +23,14 @@ jobs:
         npm run start
         rm package-lock.json
     - name: Commit files
+      if: steps.verify-changed-files.outputs.files_changed == 'true'
       run: |
         git config --local user.email "binsarjr121@gmail.com"
         git config --local user.name "Binsar Dwi Jasuma"
         d=`date '+%Y-%m-%dT%H:%M:%SZ'`
-        git commit -m "chore: update scrape data $d" -a || true
+        git commit -m "chore: update scrape data $d" -a
     - name: Push changes
+      if: steps.verify-changed-files.outputs.files_changed == 'true'
       uses: ad-m/github-push-action@master
       with:
         force: true
