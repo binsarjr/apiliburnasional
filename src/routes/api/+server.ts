@@ -29,7 +29,5 @@ export const GET = async (event) => {
 		}
 	});
 
-	await new Promise((resolve) => setTimeout(resolve, 5_000));
-
 	return json(result);
 };

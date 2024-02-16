@@ -1,11 +1,23 @@
+import { REVALIDATE_TOKEN } from '$lib';
 import { error, json } from '@sveltejs/kit';
 import moment from 'moment';
 import 'moment/locale/id';
 
+export const config = {
+	isr: {
+		expiration: 60 * 60 * 24,
+		bypassToken: REVALIDATE_TOKEN
+	}
+};
+
 export const GET = async (event) => {
 	const today = moment();
 	let tahun = today.get('year');
-	const resp = await event.fetch('/api?tahun=' + tahun);
+	const resp = await event.fetch('/api?tahun=' + tahun, {
+		headers: {
+			cookie: '__prerender_bypass=' + REVALIDATE_TOKEN
+		}
+	});
 	const items = (await resp.json()) as {
 		tanggal: string;
 		memperingati: string;
