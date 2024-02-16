@@ -1,38 +1,8 @@
 {
-  "version": 2,
-  "github": {
-    "enabled": true
-  },
-  "builds": [
+  "crons": [
     {
-      "src": "api/**",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "public/**",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api",
-      "dest": "api/index.js",
-      "headers": {
-        "Cache-Control": "public, s-maxage=3600, stale-while-revalidate",
-        "Access-Control-Allow-Origin": "*"
-      }
-    },
-    {
-      "src": "/api/next",
-      "dest": "api/next.js",
-      "headers": {
-        "Cache-Control": "public, s-maxage=3600, stale-while-revalidate",
-        "Access-Control-Allow-Origin": "*"
-      }
-    },
-    {
-      "src": "/(.*)",
-      "dest": "public/index.html"
+      "path": "/api/revalidate",
+      "schedule": "1 7 1 * *"
     }
   ]
 }
